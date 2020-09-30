@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--The is the html page for weather and clock UI-->
+<html lang= "en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App Tutorial</title>
+    <link rel="stylesheet" href ="font/Rimouski.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body onload= "intiateClock()">
+    <!--digital clock start: Will be positioned to the right of the weather application-->
+    <!--Tutorial by: Coding Snow, https://www.youtube.com/watch?v=paiI1N96EpQ&t=620s-->
+
+<div class="datetime">
+    <div class="containerclock">
+        <div class="time">
+            <span id="Hour">00</span>:
+           <span id="minutes">00</span>:
+           <span id="seconds">00</span>
+           <span id="period">AM</span>
+        </div>
+        <div class="DateName">
+            <span id="dayname">Day</span>
+        </div>
+        <div class="date">
+           <span id="month">Month</span>
+           <span id="day">00</span>,
+           <span id="year">Year</span>
+        </div>
+        <div class="alarm">
+            <span>ALARM ICON</span>
+            
+         </div>
+    </div>
+</div>
+    
+    <!--Digital clock end-->
+    
+
+
+    <!--Weather Application Start-->
+    <!--Tutorial by: Code Explained https://www.youtube.com/watch?v=KqZGuzrY9D4-->
+    
+    <div class ="container">
+        <div class="notification"></div>
+        <div class="Weather-container">
+            <div class="weather-icon">
+                <img src= "icons/unknown.png" alt="">
+            </div>
+            <div class="temperature-value">
+                <p>~ °<span>C</span> </p>
+            </div>
+            <div class= "temperature-description">
+                <p>~</p>
+            </div>
+            <div class= "wind-description">
+                <p>~<span>kts</span></p>
+            </div>
+            <div class="location">
+                <p>~</p>
+            </div>
+            
+        </div>
+    </div>
+    <!--Add button to transition to full page-->
+    <div>
+        <span>Spotify image and stuff</span>
+    </div>
+    <div></div>
+    <div>
+        <button type="button">Alarm</button> <span><button type="button">spotify</button></span><button type="button">spotify</button>
+    </div>
+    <!--Spotify-->
+    <!--Tutorial by:Avery Wicks https://www.youtube.com/watch?v=SbelQW2JaDQ&t=16s-->
+    <!--Make button to go to Spotify Library (playlist, genre, liked library)-->
+    <!--Make page that includes spotify album cover and song with clock and weather-->
+    <!--Spotify ends-->
+
+
+    <!--VirtualAssistant-->
+    <!--Make SpeechRecognition with SpeechSynthesizer-->
+    <!--Make Wake words and Command words-->
+    <!--Read time, talk about day, take weight-->
+    <!--VirtualAssistant ends-->
+
+    <!--Virtual Scale Starts-->
+    <!--Call python scale operation to take wieght from wii scale-->
+    <!--Store wieght in cloud-->
+    <!---->
+    <!--Create website that gives graph of wieght by month-->
+    <!--Virtual Scale Ends-->
+    <script src="weather.js"></script>
+    <script src="Clock.js"></script>
+    
+    
+    
+</body>
+</html>
+
