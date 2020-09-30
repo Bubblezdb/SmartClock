@@ -1,2 +1,2 @@
 # SmartClock
-This a little side project I am wokring on that will combine a digital clock, a voice assistant and spotify connection on one webpage. This will eventually go on a raspberry pi 4.
+This is a  little side project I am working on that will combine a digital clock, a voice assistant and spotify connection on one webpage. This will eventually go on a raspberry pi 4.
