@@ -1,3 +1,5 @@
+
+
 function updateClock(){
 var now= new Date();
 var dname= now.getDay(),
@@ -34,6 +36,12 @@ function intiateClock(){
 updateClock();
 window.setInterval("updateClock()",1);
 }
+document.getElementById("aMenu").onclick=function(){
+    location.href="Alarmclock.html" //switches to alarm page
+};
+document.getElementById("sMusic").onclick=function(){
+    location.href="Spotify.html" //switches to alarm page
+};
 
 
-//add click event!!! to change to alarm clock.
+

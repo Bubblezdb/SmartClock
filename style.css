@@ -118,6 +118,14 @@ body{
 .containerclock:hover{
     background: #0791bb
 }
+.alarm{
+    left: auto;
+    padding: 10;
+    margin-top: 10px;
+}
+.alarm:hover{
+    background: #0791bb;
+}
 .containerclock{
    
     background-color: #10101E;
@@ -125,6 +133,7 @@ body{
     display: block;
     width: 550px;
     padding: 5px 10px;
+    margin-top: 20px;
     float:left;
     
     border-radius: 10px;
