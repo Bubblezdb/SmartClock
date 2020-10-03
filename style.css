@@ -15,6 +15,7 @@ body{
     padding-bottom : 50px;
 }
 
+
 .app-title{
     width: 300px;
     height: 50px;
@@ -98,9 +99,7 @@ body{
 }
 
 
-.alarm{
-    float: right;
-}
+
 
 .location p{
     margin: 0;
@@ -119,9 +118,10 @@ body{
     background: #0791bb
 }
 .alarm{
-    left: auto;
-    padding: 10;
+    float: left;
+    padding: 5px 10px;
     margin-top: 10px;
+    border-radius: 10px;
 }
 .alarm:hover{
     background: #0791bb;
@@ -131,11 +131,10 @@ body{
     background-color: #10101E;
     left:auto;
     display: block;
-    width: 550px;
+    width: 570px;
     padding: 5px 10px;
     margin-top: 20px;
     float:left;
-    
     border-radius: 10px;
     padding-bottom : 50px;
 }
@@ -157,7 +156,7 @@ body{
     font-weight: 600;
     text-align: center;
     padding-left:  15px;
-    padding-top: 10px;
+    padding-top: 30px;
     letter-spacing: 5px;
 }
 .time span:not(:last-child){

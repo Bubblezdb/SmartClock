@@ -1,0 +1,55 @@
+<!DOCTYPE html = "en">
+ <!--Spotify-->
+    <!--Tutorial by:Avery Wicks https://www.youtube.com/watch?v=SbelQW2JaDQ&t=16s-->
+<head>
+    <meta charset="UTF-8"
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <title>Spotify web API</title>
+    <link rel="stylesheet" href ="font/Rimouski.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <div class="musicContainer">
+        <form action=""><!-- genre: with dropdown-->
+            <input type="hidden" id='hidden-token'>
+            <div class="col-sm-6 form-group row mt-4 px-0">
+                <label for= "Genre" class="form-label col-sm-2">Genre:</label>
+                <select name="" id="select_genre" class="form-control form-control-sm col-sm-10">
+                    <option>Select...</option>
+                </select>
+            </div>
+            <div class="col-sm-6 form-group row mt-4 px-0"><!--Playlist: with dropdown-->
+                <label for= "Genre" class="form-label col-sm-2">Playlist:</label>
+                <select name="" id="select_playlist" class="form-control form-control-sm col-sm-10">
+                    <option>Select...</option>
+                </select>
+            </div>
+            <div class="col-sm-6 row form-group px-0"><!-- Button with search label-->
+                <button type="submit" id="btn_submit" class="btn btn-sucess col-sm-12">Search</button>
+            </div>
+        </form>
+        <div class="row"><!--List for genre and playlists-->
+            <div class="col-sm-6 px-0">
+                <div class="list-group song-list">
+                    <a href= "#" class="list-group-item list-group-item-action list-group-item-light">Song 1</a>
+                </div>
+                <div class="list-group song-list">
+                    <a href= "#" class="list-group-item list-group-item-action list-group-item-light">Song 2</a>
+                </div>
+            </div>
+            <div class="offset-md-1 col-sm-4" id="song-detail">
+                <div class="row col-sm-12 px-0"><!--Album image-->
+                    <img src="icons/testImage.jpg"alt="">
+                </div>
+                <div class="row col-sm-12 px-0">
+                    <label for="Genre" class= "form-label col-sm-12">Song Title</label><!--Song Title Label-->
+                </div>
+                <div class="row col-sm-12 px-0">
+                    <label for="Artist" class= "form-label col-sm-12">By XXX:</label><!--Artist Label-->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
