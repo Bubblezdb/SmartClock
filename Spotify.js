@@ -1,19 +1,21 @@
 const APIController= (function(){
 
     const clientId= '0c4ad7bdddbf4c8c864cadeab53f8fff';
-    const clientSecret='ca57009a7f614c27b20da8c8f9d9380a';
+    const clientSecret='63a19bfed5064e6089d8edcc5d92e244';
 
     //private methods for API 
-    const _getToken= async () =>{
-        const result= await fetch('https://accounts.spotify.com/api/token',{
-            method: 'Post',
-            headers:{
-                'Content-Type':'application/x-www-form-urlencoded',
-                'Authorization': 'Basic' +btoa(clientId + ':'+clientSecret)
+    const _getToken = async () => {
+
+        const result = await fetch('https://accounts.spotify.com/api/token', {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/x-www-form-urlencoded', 
+                'Authorization' : 'Basic ' + btoa(clientId + ':' + clientSecret)
             },
             body: 'grant_type=client_credentials'
         });
-        const data= await result.json();
+
+        const data = await result.json();
         return data.access_token;
     }
 
@@ -74,80 +76,98 @@ const APIController= (function(){
 })();
 
 //UI Module
-const UIController = (function(){
+// UI Module
+const UIController = (function() {
 
     //object to hold references to html selectors
     const DOMElements = {
-        selectGenre:'#select_genre',
+        selectGenre: '#select_genre',
         selectPlaylist: '#select_playlist',
-        buttonSubmit:'#btn_submit',
+        buttonSubmit: '#btn_submit',
         divSongDetail: '#song-detail',
         hfToken: '#hidden_token',
-        divSonglist: '.song-list' 
+        divSonglist: '.song-list'
     }
+
     //public methods
     return {
 
-        //This method can be called outside of this module.
+        //method to get input fields
         inputField() {
-            return{
+            return {
                 genre: document.querySelector(DOMElements.selectGenre),
                 playlist: document.querySelector(DOMElements.selectPlaylist),
-                songs: document.querySelector(DOMElements.divSonglist),
+                tracks: document.querySelector(DOMElements.divSonglist),
                 submit: document.querySelector(DOMElements.buttonSubmit),
                 songDetail: document.querySelector(DOMElements.divSongDetail)
             }
         },
-        //method to reset playlist
-        createGenre(text,value) {
-            const html= `<option value= "${value}">${text}</option>`;
-            document.querySelector(DOMElements.selectGenre).insertAdjacentHTML('beforeend',html);//beforeend is the position 
 
-        },
-        createPlaylist(text,value){
+        // need methods to create select list option
+        createGenre(text, value) {
             const html = `<option value="${value}">${text}</option>`;
-            document.querySelector(DOMElements.selectPlaylist).insertAdjacentHTML('beforeend',html);
+            document.querySelector(DOMElements.selectGenre).insertAdjacentHTML('beforeend', html);
+        }, 
 
+        createPlaylist(text, value) {
+            const html = `<option value="${value}">${text}</option>`;
+            document.querySelector(DOMElements.selectPlaylist).insertAdjacentHTML('beforeend', html);
         },
-         
-        //need method to create a track list group item
-        createTrack(id,name){
+
+        // need method to create a track list group item 
+        createTrack(id, name) {
             const html = `<a href="#" class="list-group-item list-group-item-action list-group-item-light" id="${id}">${name}</a>`;
-            document.querySelector(DOMElements.divSongDetail).insertAdjacentHTML('beforeend',html);
-
+            document.querySelector(DOMElements.divSonglist).insertAdjacentHTML('beforeend', html);
         },
-        createSongDetail(img,title,artist){
-            const detailDiv =document.querySelector(DOMElements.divSongDetail);
-            // any time user clicks a new song, the song details should clear
-            detailDiv.innerHTML ='';
-            const html =
-            `<div class="row col-sm-12 px-0">]
-            <img src="${img}"alt="">
+
+        // need method to create the song detail
+        createTrackDetail(img, title, artist) {
+
+            const detailDiv = document.querySelector(DOMElements.divSongDetail);
+            // any time user clicks a new song, we need to clear out the song detail div
+            detailDiv.innerHTML = '';
+
+            const html = 
+            `
+            <div class="row col-sm-12 px-0">
+                <img src="${img}" alt="">        
             </div>
             <div class="row col-sm-12 px-0">
-                <label for="Genre" class= "form-label col-sm-12">${title}</label>
+                <label for="Genre" class="form-label col-sm-12">${title}:</label>
             </div>
             <div class="row col-sm-12 px-0">
-                <label for="Artist" class= "form-label col-sm-12">By ${artist}:</label>
-            </div>
+                <label for="artist" class="form-label col-sm-12">By ${artist}:</label>
+            </div> 
             `;
 
-            detailDiv.insertAdjacentHTML('beforeend',html)
-
+            detailDiv.insertAdjacentHTML('beforeend', html)
         },
-        resetTrackDetail(){
+
+        resetTrackDetail() {
             this.inputField().songDetail.innerHTML = '';
         },
-        resetTracks(){
-            this.inputField().songs.innerHTML='';
+
+        resetTracks() {
+            this.inputField().tracks.innerHTML = '';
             this.resetTrackDetail();
         },
-        resetPlaylist(){
+
+        resetPlaylist() {
             this.inputField().playlist.innerHTML = '';
             this.resetTracks();
-        }
+        },
         
+        storeToken(value) {
+            document.querySelector(DOMElements.hfToken).value=value;
+        },
+
+        getStoredToken() {
+            return {
+                token: document.querySelector(DOMElements.hfToken).value
+            }
+        }
     }
+
 })();
 
 //This module is suppose to connect both UI and API
@@ -192,7 +212,7 @@ const APPController= (function(UICtrl, APICtrl){
     });
 
     //create song selection click event listener
-    DOMInputs.songs.addEventListener('click',async (e)=>{
+    DOMInputs.tracks.addEventListener('click',async (e)=>{
         e.preventDefault();
         UICtrl.resetTrackDetail();
         const token = UICtrl.getStoredToken().token;
